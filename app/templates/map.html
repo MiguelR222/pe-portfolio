@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title> Map of my visited places </title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        h3 {
+            margin-top: 5px;
+            color: #555;
+            font-weight: normal;
+        }
+
+        #map {
+            height: 55vw;
+            width: 90vw;
+            max-width: none;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 2px solid #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Cool places I've been to! </h1>
+    <h3> Click on the pins! </h3>
+
+    <div id='map'></div>
+
+    <script>
+        const map = L.map('map').setView([20, -30], 3);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        fetch('/static/data/places.json')  // Fill json with your personal data 
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(place => {
+                    const flagPin = L.icon({
+                        iconUrl: `https://flagcdn.com/w40/${place.country.toLowerCase()}.png`,
+                        iconSize: [40, 30],
+                        iconAnchor: [20, 30],
+                        popupAnchor: [0, -30]
+                    });
+
+                    const placeInfo_popup = `
+                    <strong>${place.name}</strong><br>
+
+                    ${place.desc}<br>
+
+                    <div style="text-align:center; margin-top:10px;">
+                    <img src="${place.image}" width="150">
+                    </div>
+                `;
+
+                    L.marker(place.coords, { icon: flagPin })
+                        .addTo(map)
+                        .bindPopup(placeInfo_popup);
+                });
+            })
+            .catch(error => console.error('Error loading places file:', error));
+    </script>
+</body>
+
+</html>
