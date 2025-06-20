@@ -58,7 +58,7 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        fetch('/static/data/places.json')  // Asegúrate de que esté en static/json
+        fetch('/static/data/places.json')  // Fill json with your personal data 
             .then(response => response.json())
             .then(data => {
                 data.forEach(place => {
