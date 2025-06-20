@@ -36,8 +36,8 @@
 
         #map {
             height: 55vw;
-            width: 80vw;
-            max-width: 1200px;
+            width: 90vw;
+            max-width: none;
             margin: 20px auto;
             border-radius: 10px;
             border: 2px solid #007BFF;
@@ -48,18 +48,37 @@
 <body>
     <h1> Cool places I've been to! </h1>
     <h3> Click on the pins! </h3>
-    
+
     <div id='map'></div>
 
     <script>
-        const map = L.map('map').setView([20, 0], 2);
+        const map = L.map('map').setView([20, -30], 3);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        
 
+  // Ícono personalizado con la bandera
+  const iconoBandera = L.icon({
+    iconUrl: "/static/img/mx.png", // Asegúrate de que la ruta sea correcta
+    iconSize: [40, 30],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -35]
+  });
+
+  // Contenido del popup
+  const popup = `
+    <strong>JOrigin </strong><br>
+    Aquí nací<br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Z%C3%B3calo_CDMX_2020.jpg/640px-Z%C3%B3calo_CDMX_2020.jpg" width="100" style="margin-top:5px;">
+  `;
+
+  // Agrega el marcador con la bandera
+  L.marker([19.4326, -99.1332], { icon: iconoBandera })
+    .addTo(map)
+    .bindPopup(popup);
+        
     </script>
 
 </body>
