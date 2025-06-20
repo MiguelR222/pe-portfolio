@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Hometown",
+    "country": "MX",
+    "coords": [19.4326, -99.1332],
+    "desc": "I'm currently here.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsdz_JVKJmR6ybLhiIG3ZN1zLJl-kQAf9O1w&s"
+  },
+  {
+    "name": "Summer 2022",
+    "country": "FR",
+    "coords": [48.8566, 2.3522],
+    "desc": "Did some roadtripping in the countryside.",
+    "image": "https://www.francethisway.com/images/places/chatellerault.jpg"
+  }
+]

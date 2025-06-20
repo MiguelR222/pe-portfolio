@@ -58,29 +58,34 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+        fetch('/static/data/places.json')  // Asegúrate de que esté en static/json
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(place => {
+                    const flagPin = L.icon({
+                        iconUrl: `https://flagcdn.com/w40/${place.country.toLowerCase()}.png`,
+                        iconSize: [40, 30],
+                        iconAnchor: [20, 30],
+                        popupAnchor: [0, -30]
+                    });
 
-  // Ícono personalizado con la bandera
-  const iconoBandera = L.icon({
-    iconUrl: "/static/img/mx.png", // Asegúrate de que la ruta sea correcta
-    iconSize: [40, 30],
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -35]
-  });
+                    const placeInfo_popup = `
+                    <strong>${place.name}</strong><br>
 
-  // Contenido del popup
-  const popup = `
-    <strong>JOrigin </strong><br>
-    Aquí nací<br>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Z%C3%B3calo_CDMX_2020.jpg/640px-Z%C3%B3calo_CDMX_2020.jpg" width="100" style="margin-top:5px;">
-  `;
+                    ${place.desc}<br>
 
-  // Agrega el marcador con la bandera
-  L.marker([19.4326, -99.1332], { icon: iconoBandera })
-    .addTo(map)
-    .bindPopup(popup);
-        
+                    <div style="text-align:center; margin-top:10px;">
+                    <img src="${place.image}" width="150">
+                    </div>
+                `;
+
+                    L.marker(place.coords, { icon: flagPin })
+                        .addTo(map)
+                        .bindPopup(placeInfo_popup);
+                });
+            })
+            .catch(error => console.error('Error loading places file:', error));
     </script>
-
 </body>
 
 </html>
