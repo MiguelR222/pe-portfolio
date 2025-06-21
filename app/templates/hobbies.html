@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:title" content="Personal Portfolio">
@@ -10,10 +9,7 @@
     <meta property="og:url" content="{{ url }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link lang='sass' rel="stylesheet" href="./static/styles/main.css">
     <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
     <title>{{ title }}</title>
@@ -36,11 +32,22 @@
         </div>
     </header>
 
-    <div class="profile">
-        <div id="profile-picture" class="profile-picture">
-            <img src="./static/img/logo.jpg">
+    <div class="banner">
+        <div class="container">
+            <h1 class="title">{{ title }}</h1>
         </div>
-        <h1>{{ title }}</h1>
+    </div>
+
+    <div class="container">
+        <div class="hobbies-grid">
+            {% for hobby in hobbies %}
+            <div class="hobby-card">
+                <img src="{{ hobby.image }}" alt="{{ hobby.name }}">
+                <h3>{{ hobby.name }}</h3>
+                <p>{{ hobby.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
-</html>
+</html> 
