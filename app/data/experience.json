@@ -1,0 +1,26 @@
+[
+  {
+    "title": "SWE Intern",
+    "company": "My First Company",
+    "startDate": "2021-06-01",
+    "endDate": "2021-08-31",
+    "location": "Remote",
+    "responsabilities": [
+      "Developed a comprehensive understanding of software engineering principles.",
+      "Participated in various projects that enhanced my programming skills.",
+      "Collaborated with peers to solve complex problems and improve system designs."
+    ]
+  },
+  {
+    "title": "SWE Intern",
+    "company": "My Second Company",
+    "startDate": "2022-06-01",
+    "endDate": "2022-08-31",
+    "location": "Remote",
+    "responsabilities": [
+      "Contributed to the development of software applications using modern technologies.",
+      "Worked closely with senior engineers to learn best practices in software development.",
+      "Assisted in debugging and testing software to ensure high quality."
+    ]
+  }
+]
