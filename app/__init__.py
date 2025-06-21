@@ -20,6 +20,13 @@ def about():
         education = json.load(f)
     return render_template('about.html', title="About", url=os.getenv("URL"), education=education, experience=experience)
 
+@app.route('/hobbies')
+def hobbies():
+    json_path = os.path.join(app.root_path, "data", "hobbies.json")
+    with open(json_path) as f:
+        hobbies_data = json.load(f)
+    return render_template('hobbies.html', title="My Hobbies", url=os.getenv("URL"), hobbies=hobbies_data["hobbies"])
+
 @app.route('/map')
 def map():
     return render_template('map.html', title="Places I've been to", url=os.getenv("URL"))

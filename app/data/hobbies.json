@@ -1,0 +1,19 @@
+{
+    "hobbies": [
+        {
+            "name": "Photography",
+            "description": "Capturing moments and landscapes through my lens",
+            "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500"
+        },
+        {
+            "name": "Gaming",
+            "description": "Exploring virtual worlds and strategic challenges",
+            "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500"
+        },
+        {
+            "name": "Reading",
+            "description": "Diving into sci-fi and technical books",
+            "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500"
+        }
+    ]
+} 
