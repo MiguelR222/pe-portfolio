@@ -6,7 +6,6 @@ import json
 load_dotenv()
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
@@ -20,3 +19,7 @@ def about():
     with open(json_path_edu) as f:
         education = json.load(f)
     return render_template('about.html', title="About", url=os.getenv("URL"), education=education, experience=experience)
+
+@app.route('/map')
+def map():
+    return render_template('map.html', title="Places I've been to", url=os.getenv("URL"))
