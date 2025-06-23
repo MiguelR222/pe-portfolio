@@ -11,6 +11,10 @@ body {
     margin: 0px;
 }
 
+section {
+    text-align: center;
+}
+
 .nav-bar {
     width: 100%;
     display: inline-block;
@@ -154,4 +158,57 @@ body {
 .hobby-card p {
     color: #666;
     line-height: 1.5;
+}
+
+.section-content {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.section-content.active {
+    display: block;
+}
+
+.section-card {
+    padding: 1rem;
+    margin-top:0.5rem; 
+    margin-bottom: 1rem; 
+    border-radius: 0.5rem; 
+    border-width: 1px; 
+    border-color: #E5E7EB; 
+    width: 50%; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    text-align: center; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list {
+    margin-top: 0.5rem; 
+    list-style-type: disc; 
+    list-style-position: inside;     
+}
+
+.toggle-button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    border-radius: 0.5rem;  
+    color: #000000; 
+    background-color: #aec2df; 
+    margin-top: 2.5rem; 
+    font-size: 1.875rem;
+    line-height: 2.25rem; 
+    font-weight: 700; 
+    text-align: center; 
+    align-items: center;
+    border:none;
+}
+
+.toggle-button:hover {
+    color: white;
+    background-color: #1C539F; 
+    cursor: pointer;
+    transform:scale(1.2) 
 }

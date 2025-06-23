@@ -29,7 +29,6 @@
             </a>
             <nav>
                 <a href="/" class="nav-link">Home</a>
-                <a href="/about" class="nav-link">About</a>
                 <a href="/hobbies" class="nav-link">Hobbies</a>
                 <a href="/map" class="nav-link">Map</a>
             </nav>
@@ -42,5 +41,59 @@
         </div>
         <h1>{{ title }}</h1>
     </div>
+    <div>
+        <section>
+            <button class="toggle-button" onclick="toggleSection('about')">About Me</button>
+            <div id="about" class="section-content">
+                <div class="section-card">
+                    <h3>
+                        <strong>Miguel Ruiz</strong>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+                        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <button class="toggle-button" onclick="toggleSection('education')">Education</button>
+            <div id="education" class="section-content">
+                {% for edu in education %}
+                <div class="section-card">
+                    <h3>{{ edu.school }}</h3>
+                    <p><strong>{{ edu.degree }}</strong> | {{ edu.startDate }} - {{edu.endDate}}</p>
+                    <p>GPA {{ edu.gpa }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section>
+            <button class="toggle-button" onclick="toggleSection('experience')">Experience</button>
+            <div id="experience" class="section-content">
+            {% for exp in experience %}
+            <div class="section-card">
+                <h3>{{ exp.title }}</h3>
+                <p><strong>{{ exp.company }}</strong> | {{ exp.startDate }} - {{exp.endDate}}</p>
+                <p>Location: {{ exp.location }}</p>
+                <ul class="list">
+                    {% for resp in exp.responsabilities %}
+                    <li>{{ resp }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
