@@ -1,16 +1,23 @@
 [
   {
-    "name": "Hometown",
+    "name": "Chihuahua",
     "country": "MX",
-    "coords": [19.4326, -99.1332],
-    "desc": "I'm currently here.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsdz_JVKJmR6ybLhiIG3ZN1zLJl-kQAf9O1w&s"
+    "coords": [28.638049, -106.073075],
+    "desc": "This is my homecity, where I currently live and study.",
+    "image": "https://magicaltowns.mx/wp-content/uploads/2024/06/centro-historico-chihuahua-8-700x467.webp"
   },
   {
-    "name": "Summer 2022",
-    "country": "FR",
-    "coords": [48.8566, 2.3522],
-    "desc": "Did some roadtripping in the countryside.",
-    "image": "https://www.francethisway.com/images/places/chatellerault.jpg"
+    "name": "Guadalajara",
+    "country": "MX",
+    "coords": [20.664121, -103.352384],
+    "desc": "Went on a trip this past winter with my GF, it was a great experience and I loved the city.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR57FKwaorikL-6Ze16Ujk9zDajWyad8ZZTfA&s"
+  },
+  {
+    "name": "Monterrey",
+    "country": "MX",
+    "coords": [25.675273, -100.319616],
+    "desc": "Lived here for a while, great life experiences here.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/View_of_Monterrey_%282015%29.jpg/1200px-View_of_Monterrey_%282015%29.jpg"
   }
 ]

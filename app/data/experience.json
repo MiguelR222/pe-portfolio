@@ -1,26 +1,32 @@
 [
   {
-    "title": "SWE Intern",
-    "company": "My First Company",
-    "startDate": "2021-06-01",
-    "endDate": "2021-08-31",
+    "title": "Software Engineering Intern- Spark Program",
+    "company": "Encora Inc.",
+    "startDate": "Dec. 2024",
+    "endDate": "Present",
     "location": "Remote",
     "responsabilities": [
-      "Developed a comprehensive understanding of software engineering principles.",
-      "Participated in various projects that enhanced my programming skills.",
-      "Collaborated with peers to solve complex problems and improve system designs."
+    "Designed and architected scalable web applications using SOLID, DRY, and MVC design principles",
+    "Built and maintained modular frontend with Next.js, TypeScript, TailwindCSS, and React Context API",
+    "Implemented backend services using Java and Spring Boot, ensuring clean architecture and maintainability, integrating external APIs to extend functionality",
+    "Containerized applications using Docker for consistent deployment environments",
+    "Conducted thorough testing using Mockito, TestRestTemplate, Vitest, and React Testing Library",
+    "Completed hands-on training in Generative AI applications and integration strategies",
+    "Contributed to open source projects: PolicyEngine-app and JabRef (pending approval)"
     ]
   },
   {
-    "title": "SWE Intern",
-    "company": "My Second Company",
+    "title": "FullStack Software Engineer ",
+    "company": "LolaSux",
     "startDate": "2022-06-01",
     "endDate": "2022-08-31",
     "location": "Remote",
     "responsabilities": [
-      "Contributed to the development of software applications using modern technologies.",
-      "Worked closely with senior engineers to learn best practices in software development.",
-      "Assisted in debugging and testing software to ensure high quality."
+      "Led the design and development of a fullstack video streaming platform using Next.js, MongoDB, CDN, Stripe, and Auth, serving 1,500+ monthly users",
+      "Migrated the system from a third-party provider to in-house infrastructure, improving performance and increasing user retention by 50%",
+      "Built and integrated secure REST APIs for authentication, content access, and payment validation",
+      "Implemented end-to-end Stripe payment workflows with webhook-based event handling, leading to a 10% increase in revenue",
+      "Took ownership of backend and frontend integration pipelines, collaborating closely with the second developer and product lead"
     ]
   }
 ]

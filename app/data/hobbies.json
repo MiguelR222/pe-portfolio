@@ -1,19 +1,19 @@
 {
     "hobbies": [
         {
-            "name": "Photography",
-            "description": "Capturing moments and landscapes through my lens",
-            "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500"
+            "name": "Gym",
+            "description": "I love working out and going to the gym, it is the one place where I can truly focus on myself and let go of all my worries.",
+            "image": "https://b3327586.smushcdn.com/3327586/wp-content/uploads/2024/05/gb-botanica-gym-link-spaces-slough-1024x683.jpg?lossy=0&strip=1&webp=1"
         },
         {
             "name": "Gaming",
-            "description": "Exploring virtual worlds and strategic challenges",
-            "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500"
+            "description": "Gaming is a great way for me to unwind and connect with long-distance friends. I enjoy playing a variety of games, mostly FIFA and FPS games.",
+            "image": "https://cdn.mos.cms.futurecdn.net/v2/t:0,l:0,cw:2000,ch:1125,q:80,w:2000/RfHBPf23vHHowW2iWQLkcV.jpg"
         },
         {
-            "name": "Reading",
-            "description": "Diving into sci-fi and technical books",
-            "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500"
+            "name": "Going to the movies",
+            "description": "This is one of my most recent hobbies, I love watching a good movie (sometimes even not so good ones) and enjoying the experience of being in a cinema.",
+            "image": "https://www.nti-audio.com/portals/0/pics/en/Teaser-Cinema-1200-500.jpg"
         }
     ]
 } 
