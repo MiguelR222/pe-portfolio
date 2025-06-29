@@ -1,92 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+{% endblock %}
 
-    <title> Map of my visited places </title>
+{% block content %}
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <link lang='sass' rel="stylesheet" href="./static/styles/main.css">
-    <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
+<h1 class="text-center font-bold text-3xl mt-10"> Cool places I've been to! </h1>
+<h3 class="text-center font-bold text-xl"> Click on the pins! </h3>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<div class="flex items-center justify-center text-center mb-4">
+    <div id='map'
+        class="h-[50vh] w-full max-w-full mx-1 my-1 rounded-sm border border-blue-500 box-border sm:h-[60vh] sm:mx-2.5 sm:my-2.5 sm:rounded-md sm:border-2 md:h-[70vh] md:mx-5 md:my-5 md:rounded-lg lg:h-[75vh] lg:max-w-7xl">
+    </div>
+</div>
+{% endblock %}
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            text-align: center;
-        }
+{% block scripts %}
+<script>
+    const map = L.map('map').setView([23.284315, -102.506768], 5);
 
-        h1 {
-            margin-top: 20px;
-            color: #333;
-        }
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        h3 {
-            margin-top: 5px;
-            color: #555;
-            font-weight: normal;
-        }
+    fetch('/static/data/places.json')  
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(place => {
+                const flagPin = L.icon({
+                    iconUrl: `https://flagcdn.com/w40/${place.country.toLowerCase()}.png`,
+                    iconSize: [40, 30],
+                    iconAnchor: [20, 30],
+                    popupAnchor: [0, -30]
+                });
 
-        #map {
-            height: 55vw;
-            width: 90vw;
-            max-width: none;
-            margin: 20px auto;
-            border-radius: 10px;
-            border: 2px solid #007BFF;
-        }
-    </style>
-</head>
-
-<body>
-    <header class="nav-bar">
-        <div class="nav-content">
-            <a href="/">
-                <div class="nav-logo">
-                    <img src="./static/img/logo.svg" />
-                </div>
-            </a>
-            <nav>
-                <a href="/" class="nav-link">Home</a>
-                <a href="/hobbies" class="nav-link">Hobbies</a>
-                <a href="/map" class="nav-link">Map</a>
-            </nav>
-        </div>
-    </header>
-
-    <h1> Cool places I've been to! </h1>
-    <h3> Click on the pins! </h3>
-
-    <div id='map'></div>
-
-    <script>
-        const map = L.map('map').setView([20, -30], 3);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        fetch('/static/data/places.json')  // Fill json with your personal data 
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(place => {
-                    const flagPin = L.icon({
-                        iconUrl: `https://flagcdn.com/w40/${place.country.toLowerCase()}.png`,
-                        iconSize: [40, 30],
-                        iconAnchor: [20, 30],
-                        popupAnchor: [0, -30]
-                    });
-
-                    const placeInfo_popup = `
+                const placeInfo_popup = `
                     <strong>${place.name}</strong><br>
 
                     ${place.desc}<br>
@@ -96,13 +48,11 @@
                     </div>
                 `;
 
-                    L.marker(place.coords, { icon: flagPin })
-                        .addTo(map)
-                        .bindPopup(placeInfo_popup);
-                });
-            })
-            .catch(error => console.error('Error loading places file:', error));
-    </script>
-</body>
-
-</html>
+                L.marker(place.coords, { icon: flagPin })
+                    .addTo(map)
+                    .bindPopup(placeInfo_popup);
+            });
+        })
+        .catch(error => console.error('Error loading places file:', error));
+</script>
+{% endblock %}
