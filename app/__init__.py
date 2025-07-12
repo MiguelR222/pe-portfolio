@@ -78,3 +78,7 @@ def timeline_post_delete(id):
         return {'message': 'Timeline post deleted successfully'}, 200
     else: 
         return {'message': 'Timeline post not found'}, 404
+    
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title="Timeline", url=os.getenv("URL"))
