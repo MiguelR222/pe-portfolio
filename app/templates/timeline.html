@@ -27,7 +27,7 @@
 {% block scripts %}
 <script>
     const getTimelineElements = () => {
-        fetch('http://localhost:5000/api/timeline_post')
+        fetch('/api/timeline_post')
             .then(res => res.json())
             .then(data => {
                 const timelineContainer = document.getElementById('timeline');
@@ -56,7 +56,7 @@
         e.preventDefault()
         const payload = new FormData(form);
         console.log([...payload]);
-        fetch('http://localhost:5000/api/timeline_post', {
+        fetch('/api/timeline_post', {
             method: 'POST',
             body: payload,
         })
