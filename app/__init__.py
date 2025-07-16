@@ -88,11 +88,14 @@ TimelinePost.select().order_by(TimelinePost.created_at.desc())
     }
 @app.route('/api/timeline_post/<id>', methods=['DELETE'])
 def timeline_post_delete(id):
-    timeline_post = TimelinePost.get(id)
-    if timeline_post:
-        timeline_post.delete_instance()
-        return {'message': 'Timeline post deleted successfully'}, 200
-    else: 
+    try:
+        timeline_post = TimelinePost.get(id)
+        if timeline_post:
+            timeline_post.delete_instance()
+            return {'message': 'Timeline post deleted successfully'}, 200
+        else: 
+            return {'message': 'Timeline post not found'}, 404
+    except Exception:
         return {'message': 'Timeline post not found'}, 404
     
 @app.route('/timeline')
