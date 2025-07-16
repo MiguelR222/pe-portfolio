@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 import json
 from peewee import *
@@ -61,8 +61,20 @@ def post_time_line_post():
     name = request.form.get('name')
     email = request.form.get('email')
     content = request.form.get('content')
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
+    if not name or not name.strip():
+        return jsonify({'error': 'Invalid name'}), 400
+    if not content or not content.strip():
+        return jsonify({'error': 'Invalid content'}), 400
+
+    if not email or not email.strip():
+        return jsonify({'error': 'Invalid email'}), 400
+
+    email_s = email.strip()
+    if '@' not in email_s or '.' not in email_s:
+        return jsonify({'error': 'Invalid email'}), 400
+
+    timeline_post = TimelinePost.create(name=name.strip(), email=email.strip(), content=content.strip())
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
