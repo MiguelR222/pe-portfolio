@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 import json
 from peewee import *
@@ -9,15 +9,19 @@ import datetime
 load_dotenv()
 app = Flask(__name__)
 
-mydb = MySQLDatabase(
-    os.getenv("MYSQL_DATABASE"),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD"),
-    host=os.getenv("MYSQL_HOST"),
-    port=3306
-)
+if os.getenv("TESTING") == "true":
+    print("Running in test mode")
+    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri = True)
+else:
+    mydb = MySQLDatabase(
+        os.getenv("MYSQL_DATABASE"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        host=os.getenv("MYSQL_HOST"),
+        port=3306
+    )
 
-print(mydb)
+# print(mydb)
 
 class TimelinePost(Model):
     name= CharField()
@@ -57,8 +61,20 @@ def post_time_line_post():
     name = request.form.get('name')
     email = request.form.get('email')
     content = request.form.get('content')
-    timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
+    if not name or not name.strip():
+        return jsonify({'error': 'Invalid name'}), 400
+    if not content or not content.strip():
+        return jsonify({'error': 'Invalid content'}), 400
+
+    if not email or not email.strip():
+        return jsonify({'error': 'Invalid email'}), 400
+
+    email_s = email.strip()
+    if '@' not in email_s or '.' not in email_s:
+        return jsonify({'error': 'Invalid email'}), 400
+
+    timeline_post = TimelinePost.create(name=name.strip(), email=email.strip(), content=content.strip())
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
@@ -72,11 +88,14 @@ TimelinePost.select().order_by(TimelinePost.created_at.desc())
     }
 @app.route('/api/timeline_post/<id>', methods=['DELETE'])
 def timeline_post_delete(id):
-    timeline_post = TimelinePost.get(id)
-    if timeline_post:
-        timeline_post.delete_instance()
-        return {'message': 'Timeline post deleted successfully'}, 200
-    else: 
+    try:
+        timeline_post = TimelinePost.get(id)
+        if timeline_post:
+            timeline_post.delete_instance()
+            return {'message': 'Timeline post deleted successfully'}, 200
+        else: 
+            return {'message': 'Timeline post not found'}, 404
+    except Exception:
         return {'message': 'Timeline post not found'}, 404
     
 @app.route('/timeline')
