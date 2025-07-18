@@ -5,6 +5,7 @@ import json
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 import datetime
+import re
 
 load_dotenv()
 app = Flask(__name__)
@@ -58,23 +59,17 @@ def map():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    content = request.form.get('content')
+    name = request.form.get('name', '').strip()
+    email = request.form.get('email', '').strip()
+    content = request.form.get('content', '').strip()
+    
+    if not (name and email and content):
+        return jsonify({'error': 'Invalid fields'}), 400
 
-    if not name or not name.strip():
-        return jsonify({'error': 'Invalid name'}), 400
-    if not content or not content.strip():
-        return jsonify({'error': 'Invalid content'}), 400
-
-    if not email or not email.strip():
+    if not email or not re.match(r'^[a-zA-Z0-9]+([._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$', email): 
         return jsonify({'error': 'Invalid email'}), 400
 
-    email_s = email.strip()
-    if '@' not in email_s or '.' not in email_s:
-        return jsonify({'error': 'Invalid email'}), 400
-
-    timeline_post = TimelinePost.create(name=name.strip(), email=email.strip(), content=content.strip())
+    timeline_post = TimelinePost.create(name=name, email=email, content=content)
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
