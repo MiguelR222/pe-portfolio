@@ -1,18 +1,30 @@
 [
   {
+    "title": "Production Engineering Fellow",
+    "company": "Major League Hacking (Meta Sponsored)",
+    "startDate": "June 2025",
+    "endDate": "Present",
+    "location": "Remote",
+    "responsabilities": [
+      "Provisioning and self-hosting a production-grade web application using automation best practices and Test Driven Development",
+      "Configuring a VPS environment to host and manage containerized projects with reliability and uptime in mind",
+      "Gaining hands-on experience with production engineering workflows and tools"
+    ]
+  },
+  {
     "title": "Software Engineering Intern- Spark Program",
     "company": "Encora Inc.",
     "startDate": "Dec. 2024",
     "endDate": "Present",
     "location": "Remote",
     "responsabilities": [
-    "Designed and architected scalable web applications using SOLID, DRY, and MVC design principles",
-    "Built and maintained modular frontend with Next.js, TypeScript, TailwindCSS, and React Context API",
-    "Implemented backend services using Java and Spring Boot, ensuring clean architecture and maintainability, integrating external APIs to extend functionality",
-    "Containerized applications using Docker for consistent deployment environments",
-    "Conducted thorough testing using Mockito, TestRestTemplate, Vitest, and React Testing Library",
-    "Completed hands-on training in Generative AI applications and integration strategies",
-    "Contributed to open source projects: PolicyEngine-app and JabRef (pending approval)"
+      "Designed and architected scalable web applications using SOLID, DRY, and MVC design principles",
+      "Built and maintained modular frontend with Next.js, TypeScript, TailwindCSS, and React Context API",
+      "Implemented backend services using Java and Spring Boot, ensuring clean architecture and maintainability, integrating external APIs to extend functionality",
+      "Containerized applications using Docker for consistent deployment environments",
+      "Conducted thorough testing using Mockito, TestRestTemplate, Vitest, and React Testing Library",
+      "Completed hands-on training in Generative AI applications and integration strategies",
+      "Contributed to open source projects: PolicyEngine-app and JabRef (pending approval)"
     ]
   },
   {
