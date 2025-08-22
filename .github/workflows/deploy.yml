@@ -52,8 +52,8 @@ jobs:
         run: ssh my-vps '~/redeploy-site.sh'
       - name: Verify Container Status
         run: |
-        cd ~/pe-portfolio
-        docker compose ps
+          cd ~/pe-portfolio
+          docker compose ps
       - name: Deployment Successful
         if: success()
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
